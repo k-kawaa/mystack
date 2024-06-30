@@ -1,5 +1,13 @@
 {
     "files.associations": {
-        "socket.h": "c"
-    }
+        "socket.h": "c",
+        "device": "c",
+        "if.h": "c",
+        "if_tun.h": "c",
+        "if_ether.h": "c",
+        "errno.h": "c",
+        "device.h": "c",
+        "string.h": "c"
+    },
+    "C_Cpp.errorSquiggles": "disabled"
 }
