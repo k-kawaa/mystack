@@ -10,6 +10,6 @@ typedef struct
 }tap_device;
 
 int OpenTap(tap_device *dev);
-
+int CloseTap(tap_device *dev);
 
 #endif
