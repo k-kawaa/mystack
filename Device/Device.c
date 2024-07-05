@@ -35,7 +35,6 @@ int OpenTap(tap_device *dev){
     return 0;
 }
 
-
 int CloseTap(tap_device *dev){
     int error = 0;
     errno = 0;

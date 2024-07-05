@@ -15,7 +15,7 @@ int main(void)
     {
         return -1;
     }
-    
+    printf("test tap opened!");
     err = CloseTap(&dev);
     if (err < 0)
     {
