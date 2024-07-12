@@ -1,16 +1,26 @@
 CC = gcc
 PROGRAM = test
 INCDIR = -I../
+SRCDIR = ../Device
+OBJDIR = ./build
 
-OBJS = test.o ../Device/Device.o
+SRCS = $(wildcard $(SRCDIR)/*.c)
+OBJS = $(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(SRCS)) $(OBJDIR)/test.o
 
 all: app
 
 app: $(OBJS)
 	$(CC) $(OBJS) -o $(PROGRAM)
 
-test.o: test.c
-	$(CC) $(INCDIR) -c test.c -o test.o
+$(OBJDIR)/test.o: test.c
+	@mkdir -p $(OBJDIR)
+	$(CC) $(INCDIR) -c test.c -o $(OBJDIR)/test.o
 
-../Device/Device.o: ../Device/Device.c
-	$(CC) $(INCDIR) -c ../Device/Device.c -o ../Device/Device.o
+$(OBJDIR)/%.o: $(SRCDIR)/%.c
+	@mkdir -p $(OBJDIR)
+	$(CC) $(INCDIR) -c $< -o $@
+
+clean:
+	rm -rf $(OBJDIR) $(PROGRAM)
+
+.PHONY: all clean
