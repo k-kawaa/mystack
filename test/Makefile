@@ -1,7 +1,7 @@
 CC = gcc
 PROGRAM = test
 INCDIR = -I../
-SRCDIR = ../Device
+SRCDIR = ../Device ../Ethernet
 OBJDIR = ./build
 
 SRCS = $(wildcard $(SRCDIR)/*.c)
