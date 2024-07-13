@@ -10,8 +10,8 @@ typedef struct
     arp_table *next;    //次のテーブル
 }arp_table;
 
-int Init_Table();
-
-int AddTable(arp_table *table);
+arp_table *Init_Table();
+int AddTable(arp_table *head,arp_table *table);
+int ChangeTable_MAC(arp_table *head,__uint16_t *dst[4],__uint16_t *mac[6]);
 
 #endif
