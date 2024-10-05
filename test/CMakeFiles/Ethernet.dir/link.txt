@@ -1,2 +1,0 @@
-/usr/bin/ar qc libEthernet.a CMakeFiles/Ethernet.dir/home/kaisei/Work/socket/mystack/Ethernet/Arp_Table.c.o
-/usr/bin/ranlib libEthernet.a

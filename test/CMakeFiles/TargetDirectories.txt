@@ -1,5 +1,0 @@
-/home/kaisei/Work/socket/mystack/test/CMakeFiles/test.dir
-/home/kaisei/Work/socket/mystack/test/CMakeFiles/Device.dir
-/home/kaisei/Work/socket/mystack/test/CMakeFiles/Ethernet.dir
-/home/kaisei/Work/socket/mystack/test/CMakeFiles/edit_cache.dir
-/home/kaisei/Work/socket/mystack/test/CMakeFiles/rebuild_cache.dir
