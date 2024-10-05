@@ -1,0 +1,2 @@
+/usr/bin/ar qc libDevice.a CMakeFiles/Device.dir/home/kaisei/Work/socket/mystack/Device/Device.c.o
+/usr/bin/ranlib libDevice.a

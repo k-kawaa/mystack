@@ -3,15 +3,17 @@
 
 #include <unistd.h>
 
-typedef struct
-{
-    __uint16_t dst[4];  //相手IP
-    __uint16_t mac[6];  //相手macアドレス
-    arp_table *next;    //次のテーブル
-}arp_table;
+typedef struct{
+    __uint8_t address[4];
+    __uint8_t mac[6];
+    struct arp_table *next;
+} arp_table;
 
 arp_table *Init_Table();
-int AddTable(arp_table *head,arp_table *table);
-int ChangeTable_MAC(arp_table *head,__uint16_t *dst[4],__uint16_t *mac[6]);
+int AddTable(arp_table *head,__uint8_t *address,__uint8_t *mac);
+__uint8_t *GetMac(arp_table *head,__uint8_t *address);
+int UpdateTable(arp_table *head,__uint8_t *address[4],__uint8_t *modified_mac[6]);
+int RemoveTable(arp_table *head,__uint8_t *address[4]);
+
 
 #endif
