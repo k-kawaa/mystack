@@ -6,7 +6,7 @@
 #include "Ethernet/Arp_Table.h"
 
 int main(void){
-    tap_device dev;
+    /*tap_device dev;
     char name[] = "tap0";
     memset(&dev,0,sizeof(tap_device));
     memcpy(&dev,name,sizeof(name));
@@ -15,7 +15,7 @@ int main(void){
     {
         return -1;
     }
-    printf("test tap opened! \n");
+    printf("test tap opened! \n");*/
 
     arp_table *table = Init_Table();
 
@@ -34,16 +34,19 @@ int main(void){
     mac[5] = 0;
 
     AddTable(table,&address,&mac);
+    AddTable(table,&address,&mac);
     u_int8_t *mac_result = GetMac(table,&address);
-    if (mac_result != NULL) {
-    printf("%u", mac_result[0]);  // MACアドレスの最初のバイトを表示
-} else {
-    printf("MAC address not found.\n");
-}
-    err = CloseTap(&dev);
+    /**if (mac_result != NULL) {
+        printf("%u", mac_result[0]);  // MACアドレスの最初のバイトを表示
+    } else
+    {
+        printf("MAC address not found.\n");
+    }**/
+    ShowTable(table);
+    /**err = CloseTap(&dev);
     if (err < 0)
     {
         return -1;
-    }
+    }**/
 
 }

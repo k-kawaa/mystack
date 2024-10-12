@@ -2,7 +2,10 @@ cmake_minimum_required(VERSION 3.8)
 
 project(mystack_debug C)
 
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g -O0")
+
 add_executable(test test.c)
+
 target_include_directories(test PRIVATE ../)
 
 file(GLOB Device_files ../Device/*.c)

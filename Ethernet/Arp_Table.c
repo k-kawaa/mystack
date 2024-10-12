@@ -29,11 +29,19 @@ int AddTable(arp_table *head,__uint8_t *address,__uint8_t *mac){
     memcpy(table->address,address,sizeof(table->address));
     memcpy(table->mac,mac,sizeof(table->mac));
     pos = head;
+
     if(pos->next == NULL){
         memcpy(head->address,address,4);
         memcpy(head->mac,mac,6);
+    }else
+    {
+        do
+        {
+            pos = pos->next;
+        }while (pos->next != NULL);
+        memcpy(pos->address,address,4);
+        memcpy(pos->mac,mac,6);
     }
-    printf("MAC: %d-%d-%d-%d-%d-%d\n",head->mac[0],head->mac[1],head->mac[2],head->mac[3],head->mac[4],head->mac[5]);
     return 0;
 }
 
@@ -43,8 +51,10 @@ __uint8_t *GetMac(arp_table *head,__uint8_t *address){
     arp_table *pos;
     pos = head;
     if(pos->next == NULL){
-        printf("MAC: %d-%d-%d-%d-%d-%d\n",pos->mac[0],pos->mac[1],pos->mac[2],pos->mac[3],pos->mac[4],pos->mac[5]);
-        if(memcmp(address,pos->mac,6) == 0){
+        if(address[0] == pos->address[0]
+            && address[1] == pos->address[1]
+            && address[2] == pos->address[2]
+            && address[3] == pos->address[3]){
             return &(pos->mac);
         }else{
             return NULL;
@@ -53,7 +63,10 @@ __uint8_t *GetMac(arp_table *head,__uint8_t *address){
 
     do{
         pos = pos->next;
-        if(memcmp(address,&(pos->mac),sizeof(pos->mac)) == 0){
+        if(address[0] == pos->address[0]
+            && address[1] == pos->address[1]
+            && address[2] == pos->address[2]
+            && address[3] == pos->address[3]){
             return &(pos->mac);
         }
     }while(pos->next != NULL);
@@ -63,12 +76,25 @@ __uint8_t *GetMac(arp_table *head,__uint8_t *address){
 
 
 //テーブルの値を更新する関数（存在しない時、-1を返す）
-int UpdateTable(arp_table *head,__uint8_t *address[4],__uint8_t *modified_mac[6]){
+int UpdateTable(arp_table *head,__uint8_t *address[],__uint8_t *modified_mac[]){
 
     return 0;
 }
 
-int RemoveTable(arp_table *head,__uint8_t *address[4]){
+void ShowTable(arp_table *table){
+    printf("[Debug]\n\n");
+    arp_table *pos = table;
+
+    do
+    {
+        printf("arp_table=====\n ip:%d.%d.%d.%d \n mac: %X-%X-%X-%X-%X-%X\n",pos->address[0],pos->address[1],pos->address[2],pos->address[3],pos->mac[0],pos->mac[1],pos->mac[2],pos->mac[3],pos->mac[4],pos->mac[5]);
+        if (pos->next == NULL)break;
+        pos = pos->next;
+    }while (pos->next != NULL);
+
+}
+
+int RemoveTable(arp_table *head,__uint8_t *address[]){
     arp_table *pos;
     
     if(head->address == NULL){
