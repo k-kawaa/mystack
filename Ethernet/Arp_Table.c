@@ -6,6 +6,7 @@
 
 #include "Arp_Table.h"
 
+//sekkeiga warui. imahatukawanainode notihodo kakinaosu.
 
 arp_table *Init_Table(){
     arp_table *table;
@@ -30,9 +31,14 @@ int AddTable(arp_table *head,__uint8_t *address,__uint8_t *mac){
     memcpy(table->mac,mac,sizeof(table->mac));
     pos = head;
 
+    //最初の要素用
     if(pos->next == NULL){
         memcpy(head->address,address,4);
         memcpy(head->mac,mac,6);
+
+        arp_table *next = malloc(sizeof(arp_table));
+        memcpy(head->next,next,sizeof(next));
+
     }else
     {
         do

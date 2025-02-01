@@ -34,6 +34,8 @@ int main(void){
     mac[5] = 0;
 
     AddTable(table,&address,&mac);
+    //multi address test
+    address[3] = 2;
     AddTable(table,&address,&mac);
     u_int8_t *mac_result = GetMac(table,&address);
     /**if (mac_result != NULL) {
